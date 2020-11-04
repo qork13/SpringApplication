@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Computer</title>
+</head>
+<body>
+<form th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST'>
+GhZ: <input name="ghz" size="20" th:field="*{ghz}"> <br />
+Manufacturer: <input name="manufacturer" size="20" th:field="*{manufacturer}"><br />
+Processor Manufacturer: <input name="processorManufacturer" size="20" th:field="*{processorManufacturer}"><br />
+Serial Number: <input name="serialNum" size="11" th:field="*{serialNum}"><br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAll">View all Computers
+</a>
+</body>
+</html>
