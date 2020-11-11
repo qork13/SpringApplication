@@ -2,9 +2,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert New Computer</title>
+<script>
+	function validate(){
+		if(document.form.ghz.value < 1){
+			alert("Please provide ghz!");
+			document.form.ghz.focus();
+			return false;
+		}
+		if(document.form.manufacturer.value == ""){
+			alert("Please provide a manufacturer!");
+			document.form.manufacturer.focus();
+			return false;
+		}
+		if(document.form.processorManufacturer.value == ""){
+			alert("Please provide a processor manufacturer!");
+			document.form.processorManufacturer.focus();
+			return false;
+		}
+		if(document.form.serialNum.value < 1){
+			alert("Enter a valid serial number!");
+			document.form.serialNum.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
-<form th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST'>
+<form name="form" th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST' onsubmit="return validate()">
 GhZ: <input name="ghz" size="20" th:field="*{ghz}"> <br />
 Manufacturer: <input name="manufacturer" size="20" th:field="*{manufacturer}"><br />
 Processor Manufacturer: <input name="processorManufacturer" size="20" th:field="*{processorManufacturer}"><br />
